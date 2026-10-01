@@ -1,26 +1,51 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <memory>
 
-// Cabeceras de Fast DDS
+// Cabeceras de tipos core y transporte en Fast DDS v3
+#include <fastdds/dds/core/ReturnCode.hpp>
+#include <fastdds/rtps/common/Time_t.hpp>
+#include <fastdds/rtps/common/Locator.hpp>
+#include <fastdds/utils/IPLocator.hpp>
+#include <fastdds/rtps/transport/UDPv4TransportDescriptor.hpp>
+
+// Cabeceras DDS de Publicador
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/domain/DomainParticipant.hpp>
 #include <fastdds/dds/publisher/Publisher.hpp>
 #include <fastdds/dds/publisher/DataWriter.hpp>
 #include <fastdds/dds/topic/TypeSupport.hpp>
 
-// Cabecera generada a partir del IDL
+// Cabeceras generadas por fastddsgen
+#include "HelloWorld.hpp"
 #include "HelloWorldPubSubTypes.hpp"
 
 using namespace eprosima::fastdds::dds;
 
 int main()
 {
-    // 1. Crear el DomainParticipant
     DomainParticipantQos participant_qos;
-    participant_qos.name("Publicador_Estatico");
+    participant_qos.name("Publicador_Resilient_Multicast");
 
-    DomainParticipant* participant = 
+    // 1. Reconfigurar el transporte UDPv4 explícito para escuchar en 0.0.0.0
+    participant_qos.transport().use_builtin_transports = false;
+    auto udp_transport = std::make_shared<eprosima::fastdds::rtps::UDPv4TransportDescriptor>();
+    participant_qos.transport().user_transports.push_back(udp_transport);
+
+    // 2. Configurar tiempos de Discovery agresivos (5s de lease, 1s de anuncio)
+    participant_qos.wire_protocol().builtin.discovery_config.leaseDuration = Duration_t(5, 0);
+    participant_qos.wire_protocol().builtin.discovery_config.leaseDuration_announcementperiod = Duration_t(1, 0);
+
+    // 3. Forzar el registro del grupo Multicast RTPS estándar (239.255.0.1:7400 para Dominio 0)
+    eprosima::fastdds::rtps::Locator_t multicast_locator;
+    eprosima::fastdds::rtps::IPLocator::setIPv4(multicast_locator, "239.255.0.1");
+    multicast_locator.port = 7400;
+
+    participant_qos.wire_protocol().builtin.metatrafficMulticastLocatorList.push_back(multicast_locator);
+
+    // Crear el participante
+    DomainParticipant* participant =
         DomainParticipantFactory::get_instance()->create_participant(0, participant_qos);
 
     if (participant == nullptr) {
@@ -28,11 +53,11 @@ int main()
         return 1;
     }
 
-    // 2. Registrar el tipo de dato generado
+    // Registrar el tipo de dato
     TypeSupport type(new HelloWorldPubSubType());
     type.register_type(participant);
 
-    // 3. Crear el Topic
+    // Crear el Topic
     Topic* topic = participant->create_topic(
         "HelloWorldTopic",
         type.get_type_name(),
@@ -44,7 +69,7 @@ int main()
         return 1;
     }
 
-    // 4. Crear el Publisher y DataWriter
+    // Crear el Publisher y el DataWriter
     Publisher* publisher = participant->create_publisher(PUBLISHER_QOS_DEFAULT);
     DataWriter* writer = publisher->create_datawriter(topic, DATAWRITER_QOS_DEFAULT);
 
@@ -53,26 +78,21 @@ int main()
         return 1;
     }
 
-    std::cout << "Publicador iniciado en el topic 'HelloWorldTopic'. Enviando datos..." << std::endl;
+    std::cout << "Publicador listo y transmitiendo en 'HelloWorldTopic'..." << std::endl;
 
-    // 5. Instanciar la estructura y bucle de envío
-    HelloWorld st;
-    uint32_t count = 0;
+    HelloWorld msg;
+    msg.index(0);
+    msg.message("Hola desde Arch Linux!");
 
-    while (true) {
-        count++;
-        st.index(count);
-        st.message("Hola desde Fast DDS!");
-
-        writer->write(&st);
-
-        std::cout << "Publicado -> Index: " << st.index() 
-                  << " | Mensaje: " << st.message() << std::endl;
-
+    while (true)
+    {
+        msg.index(msg.index() + 1);
+        writer->write(&msg);
+        std::cout << "[ENVIADO] -> Index: " << msg.index() << std::endl;
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    // 6. Limpieza
+    // Limpieza de recursos
     participant->delete_contained_entities();
     DomainParticipantFactory::get_instance()->delete_participant(participant);
 
