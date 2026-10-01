@@ -94,3 +94,7 @@ Se implementó un patrón de **gestión dinámica del ciclo de vida de Fast DDS*
 2. **Destrucción Limpia en Caídas:** Si la red se cae durante la ejecución, el software detecta la pérdida de conectividad, destruye ordenadamente las entidades DDS (`delete_contained_entities()`) y entra en un bucle de espera ligero.
 3. **Re-inicialización Automática:** Al reconectar la radio o restaurar el enlace, el participante se vuelve a crear desde cero sobre la interfaz restaurada, logrando un autodescubrimiento e interconexión inmediatos.
 4. **Discovery Agresivo:** Se ajustó la política QoS de descubrimiento a un periodo de anuncio de 1 segundo y un lease duration de 5 segundos para minimizar la latencia de reconexión.
+
+## Posible prbolema a enfrentar
+
+Lo que podemos experimentar, es una perdida constante, enotnces, en vez de enviar y desconectar en funcion del link de la interfaz, es solicitar que esa interfaz lleve tiempo en activo para poder enviar 
