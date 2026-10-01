@@ -2,14 +2,20 @@
 #include <thread>
 #include <chrono>
 
+// Cabeceras de tipos core y locadores en Fast DDS v3
 #include <fastdds/dds/core/ReturnCode.hpp>
 #include <fastdds/rtps/common/Time_t.hpp>
+#include <fastdds/rtps/common/Locator.hpp>
+#include <fastdds/utils/IPLocator.hpp>
+
+// Cabeceras DDS de Publicador
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/domain/DomainParticipant.hpp>
 #include <fastdds/dds/publisher/Publisher.hpp>
 #include <fastdds/dds/publisher/DataWriter.hpp>
 #include <fastdds/dds/topic/TypeSupport.hpp>
 
+// Cabeceras generadas por fastddsgen
 #include "HelloWorld.hpp"
 #include "HelloWorldPubSubTypes.hpp"
 
@@ -20,10 +26,18 @@ int main()
     DomainParticipantQos participant_qos;
     participant_qos.name("Publicador_Resilient");
 
-    // Tiempos de Discovery agresivos para reconexión rápida (5s lease, 1s anuncio)
+    // 1. Tiempos de Discovery agresivos (5s lease, 1s anuncio)
     participant_qos.wire_protocol().builtin.discovery_config.leaseDuration = Duration_t(5, 0);
     participant_qos.wire_protocol().builtin.discovery_config.leaseDuration_announcementperiod = Duration_t(1, 0);
 
+    // 2. Peer de rescate: Pon aquí la IP ESTÁTICA del SUSCRIPTOR
+    // Esto permite el descubrimiento en caliente si la red no estaba activa al arrancar
+    eprosima::fastdds::rtps::Locator_t remote_peer;
+    eprosima::fastdds::rtps::IPLocator::setIPv4(remote_peer, "192.168.1.135"); // <--- Cambiar por IP del Suscriptor
+    remote_peer.port = 7400; // Puerto por defecto para PDP en Dominio 0
+    participant_qos.wire_protocol().builtin.initialPeersList.push_back(remote_peer);
+
+    // Crear el participante
     DomainParticipant* participant =
         DomainParticipantFactory::get_instance()->create_participant(0, participant_qos);
 
