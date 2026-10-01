@@ -98,3 +98,34 @@ Se implementó un patrón de **gestión dinámica del ciclo de vida de Fast DDS*
 ## Posible prbolema a enfrentar
 
 Lo que podemos experimentar, es una perdida constante, enotnces, en vez de enviar y desconectar en funcion del link de la interfaz, es solicitar que esa interfaz lleve tiempo en activo para poder enviar 
+
+
+
+```
+// Exigimos que la red lleve 3 segundos CONTINUOS activa antes de inicializar Fast DDS
+int confirmacion_segundos = 0;
+const int TIEMPO_ESTABILIDAD_REQUERIDO = 3; 
+
+while (confirmacion_segundos < TIEMPO_ESTABILIDAD_REQUERIDO)
+{
+    std::string ip_actual;
+    if (is_specific_interface_ready("wlan0", ip_actual))
+    {
+        confirmacion_segundos++;
+        std::cout << "[RED DETECTADA] Verificando estabilidad... (" 
+                  << confirmacion_segundos << "/" << TIEMPO_ESTABILIDAD_REQUERIDO << "s)" << std::endl;
+    }
+    else
+    {
+        if (confirmacion_segundos > 0) {
+            std::cout << "[RED INESTABLE] Microcorte detectado. Reiniciando verificación." << std::endl;
+        }
+        confirmacion_segundos = 0; // Si falla en cualquier segundo, reseteamos el contador
+    }
+
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+}
+
+std::cout << "[RED ESTABLE] La interfaz lleva " << TIEMPO_ESTABILIDAD_REQUERIDO 
+          << "s activa. Creando Fast DDS..." << std::endl;
+```
