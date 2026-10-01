@@ -1,0 +1,4 @@
+/home/alejandro/workspace/DDS_AutoDiscovery/build/CMakeFiles/publisher_node.dir
+/home/alejandro/workspace/DDS_AutoDiscovery/build/CMakeFiles/subscriber_node.dir
+/home/alejandro/workspace/DDS_AutoDiscovery/build/CMakeFiles/edit_cache.dir
+/home/alejandro/workspace/DDS_AutoDiscovery/build/CMakeFiles/rebuild_cache.dir
