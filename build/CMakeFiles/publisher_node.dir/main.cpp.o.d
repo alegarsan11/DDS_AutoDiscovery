@@ -147,21 +147,7 @@ CMakeFiles/publisher_node.dir/main.cpp.o: \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h /usr/include/c++/16/limits \
  /usr/include/c++/16/ctime /usr/include/c++/16/bits/parse_numbers.h \
- /usr/include/c++/16/chrono /usr/include/c++/16/memory \
- /usr/include/c++/16/bits/stl_tempbuf.h \
- /usr/include/c++/16/bits/stl_uninitialized.h \
- /usr/include/c++/16/bits/stl_raw_storage_iter.h \
- /usr/include/c++/16/bits/align.h /usr/include/c++/16/bits/shared_ptr.h \
- /usr/include/c++/16/bits/shared_ptr_base.h \
- /usr/include/c++/16/bits/allocated_ptr.h \
- /usr/include/c++/16/ext/aligned_buffer.h \
- /usr/include/c++/16/ext/concurrence.h \
- /usr/include/c++/16/bits/shared_ptr_atomic.h \
- /usr/include/c++/16/bits/atomic_base.h \
- /usr/include/c++/16/bits/atomic_lockfree_defines.h \
- /usr/include/c++/16/backward/auto_ptr.h \
- /usr/include/c++/16/pstl/glue_memory_defs.h \
- /usr/include/c++/16/pstl/execution_defs.h \
+ /usr/include/c++/16/chrono \
  /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/ReturnCode.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/detail/DDSReturnCode.hpp \
  /usr/include/c++/16/utility /usr/include/c++/16/bits/stl_relops.h \
@@ -191,13 +177,46 @@ CMakeFiles/publisher_node.dir/main.cpp.o: \
  /usr/include/c++/16/tr1/poly_hermite.tcc \
  /usr/include/c++/16/tr1/poly_laguerre.tcc \
  /usr/include/c++/16/tr1/riemann_zeta.tcc \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/Locator.hpp \
- /usr/include/c++/16/algorithm /usr/include/c++/16/bits/stl_algo.h \
- /usr/include/c++/16/bits/algorithmfwd.h \
- /usr/include/c++/16/bits/stl_heap.h \
- /usr/include/c++/16/bits/uniform_int_dist.h \
- /usr/include/c++/16/pstl/glue_algorithm_defs.h \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/domain/DomainParticipantFactory.hpp \
+ /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/ext/aligned_buffer.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h /usr/include/c++/16/memory \
+ /usr/include/c++/16/bits/stl_tempbuf.h \
+ /usr/include/c++/16/bits/stl_uninitialized.h \
+ /usr/include/c++/16/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/16/bits/align.h /usr/include/c++/16/bits/shared_ptr.h \
+ /usr/include/c++/16/bits/shared_ptr_base.h \
+ /usr/include/c++/16/bits/allocated_ptr.h \
+ /usr/include/c++/16/ext/concurrence.h \
+ /usr/include/c++/16/bits/shared_ptr_atomic.h \
+ /usr/include/c++/16/bits/atomic_base.h \
+ /usr/include/c++/16/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/16/backward/auto_ptr.h \
+ /usr/include/c++/16/pstl/glue_memory_defs.h \
+ /usr/include/c++/16/pstl/execution_defs.h /usr/include/c++/16/mutex \
+ /usr/include/c++/16/bits/std_mutex.h \
+ /usr/include/c++/16/bits/unique_lock.h \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/status/StatusMask.hpp \
+ /usr/include/c++/16/bitset /usr/include/c++/16/sstream \
+ /usr/include/c++/16/bits/sstream.tcc \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/domain/qos/DomainParticipantExtendedQos.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/domain/qos/DomainParticipantQos.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/policy/QosPolicies.hpp \
+ /usr/include/c++/16/vector /usr/include/c++/16/bits/stl_vector.h \
+ /usr/include/c++/16/bits/stl_bvector.h \
+ /usr/include/c++/16/bits/vector.tcc \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/detail/DDSReturnCode.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/policy/ParameterTypes.hpp \
+ /usr/include/c++/16/atomic \
+ /home/alejandro/fastdds_ws/install/include/fastcdr/cdr/fixed_size_string.hpp \
  /usr/include/c++/16/cstring /usr/include/string.h /usr/include/strings.h \
+ /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/Types.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/InstanceHandle.hpp \
+ /usr/include/c++/16/array /usr/include/c++/16/compare \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/Types.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/ProductVersion_t.hpp \
  /usr/include/c++/16/iomanip /usr/include/c++/16/locale \
  /usr/include/c++/16/bits/locale_facets_nonio.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/time_members.h \
@@ -205,20 +224,22 @@ CMakeFiles/publisher_node.dir/main.cpp.o: \
  /usr/include/libintl.h /usr/include/c++/16/bits/codecvt.h \
  /usr/include/c++/16/bits/locale_facets_nonio.tcc \
  /usr/include/c++/16/bits/locale_conv.h \
- /usr/include/c++/16/bits/quoted_string.h /usr/include/c++/16/sstream \
- /usr/include/c++/16/bits/sstream.tcc /usr/include/c++/16/vector \
- /usr/include/c++/16/bits/stl_vector.h \
- /usr/include/c++/16/bits/stl_bvector.h \
- /usr/include/c++/16/bits/vector.tcc \
+ /usr/include/c++/16/bits/quoted_string.h \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/VendorId_t.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/Guid.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/GuidPrefix_t.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/EntityId_t.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/Locator.hpp \
+ /usr/include/c++/16/algorithm /usr/include/c++/16/bits/stl_algo.h \
+ /usr/include/c++/16/bits/algorithmfwd.h \
+ /usr/include/c++/16/bits/stl_heap.h \
+ /usr/include/c++/16/bits/uniform_int_dist.h \
+ /usr/include/c++/16/pstl/glue_algorithm_defs.h \
  /home/alejandro/fastdds_ws/install/include/fastdds/dds/log/Log.hpp \
- /usr/include/c++/16/regex /usr/include/c++/16/bitset \
- /usr/include/c++/16/stack /usr/include/c++/16/deque \
- /usr/include/c++/16/bits/stl_deque.h /usr/include/c++/16/bits/deque.tcc \
- /usr/include/c++/16/bits/stl_stack.h \
+ /usr/include/c++/16/regex /usr/include/c++/16/stack \
+ /usr/include/c++/16/deque /usr/include/c++/16/bits/stl_deque.h \
+ /usr/include/c++/16/bits/deque.tcc /usr/include/c++/16/bits/stl_stack.h \
  /usr/include/c++/16/bits/std_function.h \
- /usr/include/c++/16/bits/stl_tree.h \
- /usr/include/c++/16/bits/node_handle.h \
- /usr/include/c++/16/bits/stl_map.h \
  /usr/include/c++/16/bits/regex_constants.h \
  /usr/include/c++/16/bits/regex_error.h \
  /usr/include/c++/16/bits/regex_automaton.h \
@@ -231,41 +252,9 @@ CMakeFiles/publisher_node.dir/main.cpp.o: \
  /usr/include/c++/16/bits/regex_executor.h \
  /usr/include/c++/16/bits/regex_executor.tcc \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/attributes/ThreadSettings.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/Types.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/ProductVersion_t.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/VendorId_t.hpp \
- /usr/include/c++/16/array /usr/include/c++/16/compare \
  /home/alejandro/fastdds_ws/install/include/fastdds/utils/IPLocator.hpp \
  /usr/include/c++/16/set /usr/include/c++/16/bits/stl_set.h \
  /usr/include/c++/16/bits/stl_multiset.h \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/UDPv4TransportDescriptor.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/UDPTransportDescriptor.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/SocketTransportDescriptor.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/AllowedNetworkInterface.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/NetworkInterfaceWithFilter.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/NetmaskFilterKind.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/NetworkInterface.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/LocatorWithMask.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/BlockedNetworkInterface.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/PortBasedTransportDescriptor.hpp \
- /usr/include/c++/16/map /usr/include/c++/16/bits/stl_multimap.h \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/TransportDescriptorInterface.hpp \
- /usr/include/c++/16/mutex /usr/include/c++/16/bits/std_mutex.h \
- /usr/include/c++/16/bits/unique_lock.h \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/domain/DomainParticipantFactory.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/status/StatusMask.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/domain/qos/DomainParticipantExtendedQos.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/domain/qos/DomainParticipantQos.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/policy/QosPolicies.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/detail/DDSReturnCode.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/policy/ParameterTypes.hpp \
- /usr/include/c++/16/atomic \
- /home/alejandro/fastdds_ws/install/include/fastcdr/cdr/fixed_size_string.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/dds/core/Types.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/InstanceHandle.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/Guid.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/GuidPrefix_t.hpp \
- /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/EntityId_t.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/OriginalWriterInfo.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/SequenceNumber.hpp \
  /usr/include/c++/16/cassert /usr/include/assert.h \
@@ -294,6 +283,7 @@ CMakeFiles/publisher_node.dir/main.cpp.o: \
  /home/alejandro/fastdds_ws/install/include/fastcdr/exceptions/BadOptionalAccessException.hpp \
  /home/alejandro/fastdds_ws/install/include/fastcdr/exceptions/BadParamException.h \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/attributes/ExternalLocators.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/LocatorWithMask.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/attributes/PropertyPolicy.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/attributes/ResourceManagement.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/attributes/RTPSParticipantAllocationAttributes.hpp \
@@ -309,10 +299,15 @@ CMakeFiles/publisher_node.dir/main.cpp.o: \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/LocatorSelector.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/LocatorSelectorEntry.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/common/PortParameters.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/AllowedNetworkInterface.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/NetworkInterfaceWithFilter.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/NetmaskFilterKind.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/network/NetworkInterface.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/SenderResource.hpp \
  /usr/include/c++/16/list /usr/include/c++/16/bits/stl_list.h \
  /usr/include/c++/16/bits/list.tcc \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/NetworkBuffer.hpp \
+ /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/TransportDescriptorInterface.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/transport/TransportReceiverInterface.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/flowcontrol/FlowControllerDescriptor.hpp \
  /home/alejandro/fastdds_ws/install/include/fastdds/rtps/flowcontrol/FlowControllerConsts.hpp \
