@@ -42,6 +42,19 @@ cmake --build . --target install -j$(nproc)
 
 cd ~/fastdds_ws/src/Fast-DDS
 
+mkdir -p build && cd build
+
+cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=~/fastdds_ws/install \
+    -DCMAKE_PREFIX_PATH=~/fastdds_ws/install \
+    -DBUILD_SHARED_LIBS=ON \
+    -DCOMPILE_TOOLS=ON
+
+cmake --build . --target install -j$(nproc)
+
+cd build
+
 cmake ../src \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=~/fastdds_ws/install \
