@@ -66,4 +66,3 @@ set -gx LD_LIBRARY_PATH ~/fastdds_ws/install/lib $LD_LIBRARY_PATH
  mkdir build && cd build
       cmake ..
       make
-      ./test_node
